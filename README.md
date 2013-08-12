@@ -1,6 +1,6 @@
 # DryCss
 
-TODO: Write a gem description
+A gem for identifying redundant css
 
 ## Installation
 
@@ -18,7 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+css = DryCss.new(uri)
+
+css.selectors
+css.colors
 
 ## Contributing
 
