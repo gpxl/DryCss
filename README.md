@@ -2,26 +2,12 @@
 
 A gem for identifying redundant css
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'dry_css'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install dry_css
-
 ## Usage
 
-css = DryCss.new(uri)
-
-css.selectors
+css = DryCss::CSS.new(uri)
 css.colors
+
+<small>more to come...</small>
 
 ## Contributing
 
