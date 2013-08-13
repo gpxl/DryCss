@@ -7,7 +7,11 @@ module DryCss
     end
 
     def colors
-      scan_for(CssParser::RE_COLOUR)
+      @colors ||= scan_for(CssParser::RE_COLOUR)
+    end
+
+    def sorted(scan)
+      scan.sort_by{|k,v| v }.reverse
     end
 
     private
@@ -18,15 +22,15 @@ module DryCss
       @parser.each_selector do |selector, declarations, specificity|
         if d_val = declarations.scan(/([\w-]+):[ ]?(#{@property})/)
           d_val.each do |val|
-            if @values_hash[val[1]].nil?
-              @values_hash[val[1]] = 1
+            if @values_hash[val[1].to_sym].nil?
+              @values_hash.merge!(val[1].to_sym => 1)
             else
-              @values_hash[val[1]] += 1
+              @values_hash[val[1].to_sym] += 1
             end
           end
         end
       end
-      return @values_hash.sort_by{|key,val| val}.reverse
+      return @values_hash
     end
 
   end
