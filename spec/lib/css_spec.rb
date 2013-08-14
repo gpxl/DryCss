@@ -11,7 +11,7 @@ describe DryCss::CSS do
   end
 
   it 'returns array of color values' do
-    @css.colors.should eq({:"#fff;"=>1, :"#000;"=>2})
+    @css.colors.should eq({:counts => {:"#fff;"=>1, :"#000;"=>2}, :total => 3})
   end
 
 end
