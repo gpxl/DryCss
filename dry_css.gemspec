@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock"
 
   spec.add_runtime_dependency "css_parser"
+  spec.add_runtime_dependency "nokogiri"
 end
