@@ -1,9 +1,11 @@
 module DryCss
   class CSS
     attr_reader :parser
-    def initialize(uri)
+    def initialize(*uri)
       @parser = DryCss::Parser.new
-      @parser.load_uri!(uri)
+      uri.each do |u|
+        @parser.load_uri!(u)
+      end
     end
 
     def colors
