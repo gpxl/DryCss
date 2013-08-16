@@ -7,7 +7,7 @@ module DryCss
   class Site
     def initialize(uri)
       @uri = uri
-      @html = Nokogiri::HTML(open(uri, :allow_redirections => :safe))
+      @html = Nokogiri::HTML(open(uri, :allow_redirections => :all))
     end
 
     def uris
@@ -23,7 +23,13 @@ module DryCss
     end
 
     def ensure_full_uri(path)
-      path[0] == '/' ? @uri + path : path
+      if path[0..1] == '//'
+        'http:' + path
+      elsif path[0] == '/'
+        @uri + path
+      else
+        path
+      end
     end
 
   end
