@@ -1,11 +1,13 @@
 require "nokogiri"
+require 'open-uri'
+require 'open_uri_redirections'
 
 module DryCss
   include Nokogiri
   class Site
     def initialize(uri)
       @uri = uri
-      @html = Nokogiri::HTML(open(uri))
+      @html = Nokogiri::HTML(open(uri, :allow_redirections => :safe))
     end
 
     def uris
