@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/gpxl/DryCss.png?branch=master" />
+
 # DryCss
 
 A gem for identifying redundant css
