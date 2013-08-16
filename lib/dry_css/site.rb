@@ -1,3 +1,5 @@
+require "nokogiri"
+
 module DryCss
   include Nokogiri
   class Site

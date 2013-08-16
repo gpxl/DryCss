@@ -1,5 +1,4 @@
 require 'css_parser'
-require "nokogiri"
 
 module DryCss
   include CssParser
