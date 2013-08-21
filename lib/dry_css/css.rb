@@ -33,7 +33,7 @@ module DryCss
     def scan_for(property)
       values_hash = {:counts => Hash.new(0), :total => 0}
       @parser.each_selector do |selector, declarations, specificity|
-        declarations.scan(/([\w-]+):[ ]?(#{property})/) do |prop,val|
+        declarations.scan(/([\.\w:]+)?(#{property})/) do |prop,val|
           values_hash[:counts][val.to_sym] += 1
           values_hash[:total] += 1
         end
