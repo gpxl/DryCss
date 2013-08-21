@@ -20,7 +20,10 @@ module DryCss
       threads = []
       uris.each do |u|
         threads << Thread.new(u) do |uri|
-          parser.load_uri!(uri)
+          begin
+            parser.load_uri!(uri)
+          rescue CssParser::RemoteFileError
+          end
         end
       end
       threads.each{|thr| thr.join }

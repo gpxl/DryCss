@@ -21,4 +21,11 @@ describe DryCss::CSS do
     @css.colors.should eq({:counts => {:"#fff;"=>2, :"#000;"=>4}, :total => 6})
   end
 
+  it 'ignores bad uris' do
+    file_name = 'file://' + File.expand_path(File.dirname(__FILE__)) + '/../fixtures/example.css'
+    file_name2 = 'file://' + File.expand_path(File.dirname(__FILE__)) + '/../fixtures/example404.css'
+    @css = DryCss::CSS.new(file_name, file_name2)
+    @css.colors.should eq({:counts => {:"#fff;"=>1, :"#000;"=>2}, :total => 3})
+  end
+
 end
